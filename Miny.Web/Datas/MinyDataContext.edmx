@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MinyDataContext.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MinyDataContextStoreContainer">
+          <EntitySet Name="vItem" EntityType="MinyDataContext.Store.vItem" store:Type="Views" store:Schema="Miny" store:Name="vItem">
+            <DefiningQuery>SELECT 
+      [vItem].[ItemId] AS [ItemId], 
+      [vItem].[AuthorId] AS [AuthorId], 
+      [vItem].[WallId] AS [WallId], 
+      [vItem].[NbCol] AS [NbCol], 
+      [vItem].[Note] AS [Note], 
+      [vItem].[PicturePath] AS [PicturePath], 
+      [vItem].[Url] AS [Url], 
+      [vItem].[VideoPath] AS [VideoPath]
+      FROM [Miny].[vItem] AS [vItem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vWallDetail" EntityType="MinyDataContext.Store.vWallDetail" store:Type="Views" store:Schema="Miny" store:Name="vWallDetail">
+            <DefiningQuery>SELECT 
+      [vWallDetail].[WallId] AS [WallId], 
+      [vWallDetail].[Name] AS [Name], 
+      [vWallDetail].[OwnerId] AS [OwnerId]
+      FROM [Miny].[vWallDetail] AS [vWallDetail]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Miny.Miny.vItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="WallId" />
+            <PropertyRef Name="NbCol" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="WallId" Type="int" Nullable="false" />
+          <Property Name="NbCol" Type="int" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="400" />
+          <Property Name="PicturePath" Type="varchar" MaxLength="100" />
+          <Property Name="Url" Type="varchar" MaxLength="100" />
+          <Property Name="VideoPath" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Miny.Miny.vWallDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vWallDetail">
+          <Key>
+            <PropertyRef Name="WallId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="WallId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="sCreateItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Miny">
+          <Parameter Name="WallId" Type="int" Mode="In" />
+          <Parameter Name="AuthorId" Type="int" Mode="In" />
+          <Parameter Name="Note" Type="varchar" Mode="In" />
+          <Parameter Name="Url" Type="varchar" Mode="In" />
+          <Parameter Name="PicturePath" Type="varchar" Mode="In" />
+          <Parameter Name="VideoPath" Type="varchar(max)" Mode="In" />
+          <Parameter Name="NbCol" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sDeleteItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Miny">
+          <Parameter Name="ItemToDelete" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MinyDataContext" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="vItems" EntityType="MinyDataContext.vItem" />
+          <EntitySet Name="vWallDetails" EntityType="MinyDataContext.vWallDetail" />
+          <FunctionImport Name="sCreateItem" ReturnType="Collection(Int32)">
+            <Parameter Name="WallId" Mode="In" Type="Int32" />
+            <Parameter Name="AuthorId" Mode="In" Type="Int32" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="Url" Mode="In" Type="String" />
+            <Parameter Name="PicturePath" Mode="In" Type="String" />
+            <Parameter Name="VideoPath" Mode="In" Type="String" />
+            <Parameter Name="NbCol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sDeleteItem">
+            <Parameter Name="ItemToDelete" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="vItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="WallId" />
+            <PropertyRef Name="NbCol" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="WallId" Type="Int32" Nullable="false" />
+          <Property Name="NbCol" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="PicturePath" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Url" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="VideoPath" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vWallDetail">
+          <Key>
+            <PropertyRef Name="WallId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="WallId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MinyDataContextStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="vItems">
+            <EntityTypeMapping TypeName="MinyDataContext.vItem">
+              <MappingFragment StoreEntitySet="vItem">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="WallId" ColumnName="WallId" />
+                <ScalarProperty Name="NbCol" ColumnName="NbCol" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="VideoPath" ColumnName="VideoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vWallDetails">
+            <EntityTypeMapping TypeName="MinyDataContext.vWallDetail">
+              <MappingFragment StoreEntitySet="vWallDetail">
+                <ScalarProperty Name="WallId" ColumnName="WallId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sCreateItem" FunctionName="MinyDataContext.Store.sCreateItem" />
+          <FunctionImportMapping FunctionImportName="sDeleteItem" FunctionName="MinyDataContext.Store.sDeleteItem" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

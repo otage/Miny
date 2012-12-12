@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MinyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MinyModelStoreContainer">
+          <EntitySet Name="vItemDetails" EntityType="MinyModel.Store.vItemDetails" store:Type="Views" store:Schema="Miny" store:Name="vItemDetails">
+            <DefiningQuery>SELECT 
+      [vItemDetails].[ItemId] AS [ItemId], 
+      [vItemDetails].[AuthorId] AS [AuthorId], 
+      [vItemDetails].[WallId] AS [WallId], 
+      [vItemDetails].[WallName] AS [WallName], 
+      [vItemDetails].[WallOwnerId] AS [WallOwnerId]
+      FROM [Miny].[vItemDetails] AS [vItemDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vItemNote" EntityType="MinyModel.Store.vItemNote" store:Type="Views" store:Schema="Miny" store:Name="vItemNote">
+            <DefiningQuery>SELECT 
+      [vItemNote].[ItemId] AS [ItemId], 
+      [vItemNote].[Note] AS [Note]
+      FROM [Miny].[vItemNote] AS [vItemNote]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vItemPicture" EntityType="MinyModel.Store.vItemPicture" store:Type="Views" store:Schema="Miny" store:Name="vItemPicture">
+            <DefiningQuery>SELECT 
+      [vItemPicture].[ItemId] AS [ItemId], 
+      [vItemPicture].[PicturePath] AS [PicturePath]
+      FROM [Miny].[vItemPicture] AS [vItemPicture]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vItemUrl" EntityType="MinyModel.Store.vItemUrl" store:Type="Views" store:Schema="Miny" store:Name="vItemUrl">
+            <DefiningQuery>SELECT 
+      [vItemUrl].[ItemId] AS [ItemId], 
+      [vItemUrl].[Url] AS [Url], 
+      [vItemUrl].[UrlText] AS [UrlText]
+      FROM [Miny].[vItemUrl] AS [vItemUrl]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Miny.Miny.vItemDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vItemDetails">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="WallId" />
+            <PropertyRef Name="WallName" />
+            <PropertyRef Name="WallOwnerId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="WallId" Type="int" Nullable="false" />
+          <Property Name="WallName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="WallOwnerId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Miny.Miny.vItemNote' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vItemNote">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="Note" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Note" Type="varchar" Nullable="false" MaxLength="400" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Miny.Miny.vItemPicture' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vItemPicture">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="PicturePath" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="PicturePath" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Miny.Miny.vItemUrl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vItemUrl">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="Url" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Url" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="UrlText" Type="varchar" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MinyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MinyEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="vItemDetails" EntityType="MinyModel.vItemDetail" />
+          <EntitySet Name="vItemNotes" EntityType="MinyModel.vItemNote" />
+          <EntitySet Name="vItemPictures" EntityType="MinyModel.vItemPicture" />
+          <EntitySet Name="vItemUrls" EntityType="MinyModel.vItemUrl" />
+        </EntityContainer>
+        <EntityType Name="vItemDetail">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="WallId" />
+            <PropertyRef Name="WallName" />
+            <PropertyRef Name="WallOwnerId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="WallId" Type="Int32" Nullable="false" />
+          <Property Name="WallName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="WallOwnerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vItemNote">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="Note" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vItemPicture">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="PicturePath" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="PicturePath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vItemUrl">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="Url" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UrlText" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MinyModelStoreContainer" CdmEntityContainer="MinyEntities">
+          <EntitySetMapping Name="vItemDetails">
+            <EntityTypeMapping TypeName="MinyModel.vItemDetail">
+              <MappingFragment StoreEntitySet="vItemDetails">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="WallId" ColumnName="WallId" />
+                <ScalarProperty Name="WallName" ColumnName="WallName" />
+                <ScalarProperty Name="WallOwnerId" ColumnName="WallOwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vItemNotes">
+            <EntityTypeMapping TypeName="MinyModel.vItemNote">
+              <MappingFragment StoreEntitySet="vItemNote">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vItemPictures">
+            <EntityTypeMapping TypeName="MinyModel.vItemPicture">
+              <MappingFragment StoreEntitySet="vItemPicture">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vItemUrls">
+            <EntityTypeMapping TypeName="MinyModel.vItemUrl">
+              <MappingFragment StoreEntitySet="vItemUrl">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="UrlText" ColumnName="UrlText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

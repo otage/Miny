@@ -1,0 +1,181 @@
+﻿@model IEnumerable<MINY.Web.Datas.vItem>
+
+<div id="container">
+    @foreach(var v in Model)
+    { 
+        string NbCol = "col" + v.NbCol; 
+        <div id="item-@v.ItemId" class="item col @NbCol">
+            @if( v.Note != null ) { <div class="note element"><p>@v.Note</p></div> }
+                
+            @if( v.PicturePath != null ) 
+            { 
+                <div class="picture element">
+                    <img src="@v.PicturePath" alt="Sorry, picture not found..." />
+                </div> 
+            }
+
+            @if( v.VideoPath != null  )
+            { 
+                string videoHeight = "videoHeight" + v.NbCol;
+                <div class="video element">
+                    <iframe class="@videoHeight" src="@v.VideoPath"></iframe>
+                </div>
+            }
+
+            @if( v.Url != null  ) 
+            { 
+                <div class="url element">
+                    <a href="@v.Url">@v.Url</a>
+                </div> 
+            }
+
+            @Ajax.ActionLink( 
+                "Delete this item", 
+                "DeleteItem", 
+                "Miny", 
+                new { id = v.ItemId }, 
+                new AjaxOptions 
+                    { OnSuccess = "ItemDeleted", Confirm = "Delete permanently ?" } 
+                )
+        </div>
+    }
+    <div class="item col col1">
+        Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor.
+    </div>
+    <div class="item col col1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra ultrices 
+        molestie. Curabitur rutrum iaculis pellentesque. Nulla convallis faucibus hendrerit. 
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis 
+        egestas. Nam suscipit aliquam ligula, sed elementum ligula lacinia sagittis. 
+        Proin eu elit odio. Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor.
+    </div>
+    <div class="item col col1">
+        <img src="~/Content/themes/base/images/slide-1.jpg" />
+    </div>
+    <div class="item col col1">
+        Nam suscipit aliquam ligula, sed elementum ligula lacinia sagittis. 
+        Proin eu elit odio.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra ultrices 
+        molestie. Curabitur rutrum iaculis pellentesque. Nulla convallis faucibus hendrerit. 
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis 
+        egestas. Nam suscipit aliquam ligula, sed elementum ligula lacinia sagittis. 
+        Proin eu elit odio. Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor.
+    </div>
+    <div class="item col col1">
+        <img src="~/Content/themes/base/images/slide-2.jpg" />
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit.
+    </div>
+    <div class="item col col1">
+        <img src="~/Content/themes/base/images/slide-3.jpg" />
+    </div>
+    <div class="item col col1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra ultrices 
+        molestie. Curabitur rutrum iaculis pellentesque. Nulla convallis faucibus hendrerit. 
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis 
+        egestas. Nam suscipit aliquam ligula, sed elementum ligula lacinia sagittis. 
+        Proin eu elit odio. Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+     <div class="item col col1">
+        Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit.
+    </div>
+    <div class="item col col1">
+        Nullam mattis tempus hendrerit. Pellentesque habitant morbi 
+        tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ullamcorper 
+        egestas sapien, eu volutpat purus blandit volutpat. Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor. 
+    </div>
+     <div class="item col col1">
+        Nullam at leo rhoncus tortor convallis 
+        hendrerit. Ut iaculis placerat dolor.
+    </div>
+</div>
+
+
+

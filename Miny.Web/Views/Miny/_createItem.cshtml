@@ -1,0 +1,56 @@
+﻿@model MINY.Web.Models.ViewModels.CreateItemViewModel
+
+@{
+    AjaxOptions options = new AjaxOptions { OnSuccess = "ItemAdded" };
+}
+
+<div id="waitingForCreation"></div>
+<div id="createItemForm" class="">
+    @using(Ajax.BeginForm( "CreateItem", "Miny", options ))
+    {
+        <ul>
+            <li id="addNote" class="addElement">
+                @Html.Label( "Note" )
+               <input id="Note" class="input-block-level" name="Note" placeHolder="Ajoutez une note..." type="text" value="" />
+            </li>
+    
+            <li id="addUrl" class="addElement">
+                @Html.Label( "Lien" )
+                <input id="Url" class="input-block-level" name="Url" placeHolder="Ajoutez un lien..." type="text" value="" />
+           
+            </li>
+
+            <li id="addPicture" class="addElement">
+                @Html.Label( "Image" )
+                <input id="PicturePath" class="input-block-level" name="PicturePath" placeHolder="Ajoutez une image..." type="text" value="" />
+            </li>
+
+            <li id="addVideo" class="addElement">
+                @Html.Label( "Vidéo" )
+                <input id="VideoPath" class="input-block-level" name="VideoPath" placeHolder="Ajoutez une vidéo..." type="text" value="" />
+            </li>
+
+            <li id="NbCol" class="addElement">
+                @Html.Label( "Nombre de colonnes" )
+                <label class="radio inline">
+                <input type="radio" name="NbCol" id="optionsRadios1" value="1" checked>
+                    1
+                </label>
+                <label class="radio inline">
+                <input type="radio" name="NbCol" id="optionsRadios2" value="2">
+                    2
+                </label>
+                <label class="radio inline">
+                <input type="radio" name="NbCol" id="optionsRadios3" value="3">
+                    3
+                </label>           
+            </li>
+        </ul>
+    
+        @Html.HiddenFor( x => x.WallId );
+        @Html.HiddenFor( x => x.AuthorId ); 
+        <input id="" class="btn btn-large btn-block btn-info" type="submit" value="Soumettre" />
+    }
+</div>
+
+@Scripts.Render( "~/bundles/watch" );

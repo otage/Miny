@@ -1,0 +1,29 @@
+﻿@model MINY.Web.Models.ViewModels.WallViewModel
+
+@{
+    ViewBag.Title = "Wall";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.WallDetail.Name</h2>
+@{
+    MINY.Web.Models.ViewModels.CreateItemViewModel c = new MINY.Web.Models.ViewModels.CreateItemViewModel();
+    c.WallId = Model.WallDetail.WallId;
+    c.AuthorId = 1;
+}
+
+<section>
+    @Html.Partial( "_createItem", c )
+    @Html.Partial( "_wallItems", Model.SortedItems )
+</section>
+
+@Scripts.Render("~/bundles/jquerymasonry")
+@Scripts.Render("~/bundles/bootstrapjs")
+@Scripts.Render("~/bundles/minyjs")
+
+
+
+
+
+
+

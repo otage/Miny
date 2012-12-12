@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miny.Web", "MINY.Web\Miny.Web.csproj", "{CF13E4D8-1830-49B3-986F-335E3356AD71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miny.Tests", "Miny.Tests\Miny.Tests.csproj", "{825028C1-33E9-421A-9057-768205D267ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miny.Core", "Miny.Core", "{1EE71E55-42C9-497F-8B6C-C402E8EB1A05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF13E4D8-1830-49B3-986F-335E3356AD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF13E4D8-1830-49B3-986F-335E3356AD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF13E4D8-1830-49B3-986F-335E3356AD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF13E4D8-1830-49B3-986F-335E3356AD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{825028C1-33E9-421A-9057-768205D267ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{825028C1-33E9-421A-9057-768205D267ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{825028C1-33E9-421A-9057-768205D267ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{825028C1-33E9-421A-9057-768205D267ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

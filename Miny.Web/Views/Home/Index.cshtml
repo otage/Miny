@@ -1,0 +1,19 @@
+﻿@model MINY.Web.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Home</h2>
+
+<div id="result"></div>
+
+@using(Ajax.BeginForm("Create", "Home", new AjaxOptions { UpdateTargetId = "result", HttpMethod = "post" } ))
+{ 
+    <fieldset>
+        @Html.LabelFor(x => x.AreaName)
+        @Html.EditorFor(x => x.AreaName)
+        <input type="submit" value="validate" />
+    </fieldset>
+}
